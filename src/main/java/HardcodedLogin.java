@@ -1,5 +1,15 @@
+import java.util.HashMap;
+import java.util.Map;
 
 public class HardcodedLogin {
+
+    final private Map<String, String> auth_table = new HashMap<String,String>();
+
+    HardcodedLogin()
+    {
+        this.auth_table.put("admin", "qwerty");
+        this.auth_table.put("user", "password");
+    }
     /**
      * This challenge represents a hardcoded login example:
      *
@@ -15,6 +25,10 @@ public class HardcodedLogin {
      * @return true if there is a successful login, and false otherwise.
      */
     public boolean login(String username, String password){
+        if (this.auth_table.containsKey(username))
+        {
+            if (this.auth_table.get(username) == password) return true;
+        }
         return false;
     }
 }
